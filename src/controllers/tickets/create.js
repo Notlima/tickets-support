@@ -1,9 +1,9 @@
 import { randomUUID } from "node:crypto"
 
-export function create({req, res}){
+export function create({req, res, database}){
   const { equipment, description, username } = req.body
 
-  const ticket = {
+  const tickets = {
     id: randomUUID(),
     equipment,
     description,
@@ -12,5 +12,8 @@ export function create({req, res}){
     create_at: new Date(),
     updated_at: new Date(),
   }
-  return res.end(JSON.stringify(ticket))
+
+    database.insert("tickets", tickets)
+
+  return res.writeHead(201).end(JSON.stringify(tickets))
 }
