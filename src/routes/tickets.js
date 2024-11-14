@@ -2,6 +2,7 @@ import { create } from "../controllers/tickets/create.js"
 import { list } from "../controllers/tickets/list.js"
 import { update } from "../controllers/tickets/update.js"
 import { updateStatus } from "../controllers/tickets/updateStatus.js"
+import { remove } from "../controllers/tickets/remove.js"
 
 //Exporta a constante tickets para ser utilizada em outros modulos que a importem
 export const tickets = [ 
@@ -36,5 +37,13 @@ export const tickets = [
     path: "/tickets/:id/close",
     //Função que controla a resposta da rota com a req e res
     controller: updateStatus,
+  },
+  {
+    //Define o metodo HTTP como GET. 
+    method: "DELETE",
+    //Define a URL da rota
+    path: "/tickets/:id",
+    //Função que controla a resposta da rota com a req e res
+    controller: remove,
   },
 ]
