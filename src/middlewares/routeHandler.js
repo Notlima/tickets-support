@@ -17,8 +17,9 @@ export function routeHandler (req, res) {
 
     const routeParams = req.url.match(route.path)
 
-    const {query} = routeParams.groups
+    const {query, ...params} = routeParams.groups
 
+    req.params = params
     req.query = query ? extractQueryParams(query) : {}
     //Chama o controlador da rota correspondente, passando a req e res, para que o controlador processe a req e envie uma res apropriada
     return route.controller({ req, res, database})
