@@ -71,7 +71,7 @@ export class Database {
     if(rowIndex > -1){
       this.#database[table][rowIndex] = {
         ...this.#database[table][rowIndex],
-        ...data
+        ...data,
       }
 
       this.#persist()
